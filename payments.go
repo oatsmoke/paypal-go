@@ -5,33 +5,25 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/oatsmoke/paypal-go/model"
-	"io"
 	"net/http"
 )
 
 func (c *Client) RefundCapturedPayment(ctx context.Context, captureId string) (*model.Capture, error) {
+	const fn = "RefundCapturedPayment"
+
 	url := fmt.Sprintf("%s/v2/payments/captures/%s/refund", c.URL, captureId)
 	req, err := http.NewRequestWithContext(ctx, "POST", url, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	res, err := c.SendWithAuth(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-
-	if res.StatusCode != http.StatusCreated {
-		return nil, fmt.Errorf("RefundCapturedPayment: status code %d", res.StatusCode)
-	}
-
-	data, err := io.ReadAll(res.Body)
+	res, err := c.SendWithAuth(ctx, req, http.StatusCreated, fn)
 	if err != nil {
 		return nil, err
 	}
 
 	out := new(model.Capture)
-	if err := json.Unmarshal(data, out); err != nil {
+	if err := json.Unmarshal(res, out); err != nil {
 		return nil, err
 	}
 

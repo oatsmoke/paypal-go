@@ -5,12 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/oatsmoke/paypal-go/model"
-	"io"
 	"net/http"
 	"strings"
 )
 
 func (c *Client) CreateOrder(ctx context.Context, in *model.PayPal) (*model.PayPal, error) {
+	const fn = "CreateOrder"
+
 	body, err := json.Marshal(in)
 	if err != nil {
 		return nil, err
@@ -22,22 +23,13 @@ func (c *Client) CreateOrder(ctx context.Context, in *model.PayPal) (*model.PayP
 		return nil, err
 	}
 
-	res, err := c.SendWithAuth(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-
-	if res.StatusCode != http.StatusCreated {
-		return nil, fmt.Errorf("CreateOrder: status code %d", res.StatusCode)
-	}
-
-	data, err := io.ReadAll(res.Body)
+	res, err := c.SendWithAuth(ctx, req, http.StatusCreated, fn)
 	if err != nil {
 		return nil, err
 	}
 
 	out := new(model.PayPal)
-	if err := json.Unmarshal(data, out); err != nil {
+	if err := json.Unmarshal(res, out); err != nil {
 		return nil, err
 	}
 
