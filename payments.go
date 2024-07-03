@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/oatsmoke/paypal-go/model"
 	"io"
 	"net/http"
-	"paypal-go/model"
 )
 
 func (c *Client) RefundCapturedPayment(ctx context.Context, captureId string) (*model.Capture, error) {

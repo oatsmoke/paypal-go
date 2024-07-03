@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/oatsmoke/paypal-go/model"
 	"io"
 	"net/http"
-	"paypal-go/model"
 	"strings"
 	"time"
 )
