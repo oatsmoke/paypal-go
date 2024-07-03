@@ -29,7 +29,7 @@ func (c *Client) CreateOrder(ctx context.Context, in *model.PayPal) (*model.PayP
 	}
 
 	out := new(model.PayPal)
-	if err := json.Unmarshal(res, out); err != nil {
+	if err := json.Unmarshal(res, &out); err != nil {
 		return nil, err
 	}
 

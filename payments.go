@@ -23,7 +23,7 @@ func (c *Client) RefundCapturedPayment(ctx context.Context, captureId string) (*
 	}
 
 	out := new(model.Capture)
-	if err := json.Unmarshal(res, out); err != nil {
+	if err := json.Unmarshal(res, &out); err != nil {
 		return nil, err
 	}
 

@@ -49,7 +49,7 @@ func (c *Client) GetAccessToken(ctx context.Context) error {
 	}
 
 	result := new(model.Authentication)
-	if err := json.Unmarshal(res, result); err != nil {
+	if err := json.Unmarshal(res, &result); err != nil {
 		return err
 	}
 

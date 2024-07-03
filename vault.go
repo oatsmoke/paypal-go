@@ -29,7 +29,7 @@ func (c *Client) CreatePaymentToken(ctx context.Context, in *model.PaymentSource
 	}
 
 	out := new(model.PayPal)
-	if err := json.Unmarshal(res, out); err != nil {
+	if err := json.Unmarshal(res, &out); err != nil {
 		return nil, err
 	}
 
@@ -51,7 +51,7 @@ func (c *Client) RetrievePaymentToken(ctx context.Context, id string) (*model.Pa
 	}
 
 	out := new(model.PayPal)
-	if err := json.Unmarshal(res, out); err != nil {
+	if err := json.Unmarshal(res, &out); err != nil {
 		return nil, err
 	}
 
@@ -94,7 +94,7 @@ func (c *Client) CreateSetupToken(ctx context.Context, in *model.PayPal) (*model
 	}
 
 	out := new(model.PayPal)
-	if err := json.Unmarshal(res, out); err != nil {
+	if err := json.Unmarshal(res, &out); err != nil {
 		return nil, err
 	}
 
