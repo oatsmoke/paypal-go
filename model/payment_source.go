@@ -1,6 +1,6 @@
 package model
 
 type PaymentSource struct {
-	Card  *Card  `json:"card"`
-	Token *Token `json:"token"`
+	Card  *Card  `json:"card,omitempty"`
+	Token *Token `json:"token,omitempty"`
 }

@@ -3,18 +3,18 @@ package model
 import "time"
 
 type Capture struct {
-	Id                        string                     `json:"id"`
-	Amount                    *Amount                    `json:"amount"`
-	Status                    string                     `json:"status"`
-	Note                      string                     `json:"note"`
-	NoteToPayer               string                     `json:"note_to_payer"`
-	PaymentInstruction        *PaymentInstruction        `json:"payment_instruction"`
-	Payee                     *Payee                     `json:"payee"`
-	SellerProtection          *SellerProtection          `json:"seller_protection"`
-	FinalCapture              bool                       `json:"final_capture"`
-	SellerReceivableBreakdown *SellerReceivableBreakdown `json:"seller_receivable_breakdown"`
-	InvoiceId                 string                     `json:"invoice_id"`
-	CreateTime                time.Time                  `json:"create_time"`
-	UpdateTime                time.Time                  `json:"update_time"`
-	Links                     []*Link                    `json:"links"`
+	Id                        string                     `json:"id,omitempty"`
+	Amount                    *Amount                    `json:"amount,omitempty"`
+	Status                    string                     `json:"status,omitempty"`
+	Note                      string                     `json:"note,omitempty"`
+	NoteToPayer               string                     `json:"note_to_payer,omitempty"`
+	PaymentInstruction        *PaymentInstruction        `json:"payment_instruction,omitempty"`
+	Payee                     *Payee                     `json:"payee,omitempty"`
+	SellerProtection          *SellerProtection          `json:"seller_protection,omitempty"`
+	FinalCapture              bool                       `json:"final_capture,omitempty"`
+	SellerReceivableBreakdown *SellerReceivableBreakdown `json:"seller_receivable_breakdown,omitempty"`
+	InvoiceId                 string                     `json:"invoice_id,omitempty"`
+	CreateTime                time.Time                  `json:"create_time,omitempty"`
+	UpdateTime                time.Time                  `json:"update_time,omitempty"`
+	Links                     []*Link                    `json:"links,omitempty"`
 }

@@ -1,5 +1,5 @@
 package model
 
 type Attributes struct {
-	Customer *Customer `json:"customer"`
+	Customer *Customer `json:"customer,omitempty"`
 }

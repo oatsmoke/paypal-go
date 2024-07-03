@@ -1,5 +1,5 @@
 package model
 
 type Payments struct {
-	Captures []*Capture `json:"captures"`
+	Captures []*Capture `json:"captures,omitempty"`
 }
