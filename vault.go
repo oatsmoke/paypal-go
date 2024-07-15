@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func (c *Client) CreatePaymentToken(ctx context.Context, in *model.PaymentSource) (*model.PayPal, error) {
+func (c *Client) CreatePaymentToken(ctx context.Context, in *model.PayPal) (*model.PayPal, error) {
 	const fn = "CreatePaymentToken"
 
 	body, err := json.Marshal(in)
