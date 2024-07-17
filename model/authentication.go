@@ -1,16 +1,16 @@
 package model
 
 type Authentication struct {
-	//Список разрешений, которые предоставляет данный токен к различным сервисам PayPal
+	//List of permissions that this token grants to various PayPal services
 	Scope string `json:"scope,omitempty"`
-	//Токен доступа
+	//Access token
 	AccessToken string `json:"access_token,omitempty"`
-	//Тип токена
+	//Token type
 	TokenType string `json:"token_type,omitempty"`
-	//Идентификатор приложения, которому выдан токен
+	//Identifier of the application to which the token has been issued
 	AppId string `json:"app_id,omitempty"`
-	//Время действия токена в секундах
+	//Token validity time in seconds
 	ExpiresIn int `json:"expires_in,omitempty"`
-	//Уникальный идентификатор запроса, который может быть использован для предотвращения повторного использования одного и того же запроса
+	//A unique request identifier that can be used to prevent reuse of the same request
 	Nonce string `json:"nonce,omitempty"`
 }
